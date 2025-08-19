@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>DECOBAY</title>
+    <style>
+        .fade-in {
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="w-full mb-20 absolute top-0 left-0 z-[500] py-6 px-8 backdrop-blur-md">
+        <div class="flex justify-between items-center">
+            <!-- Menú desktop (visible en md y arriba) -->
+            <div class="hidden md:flex space-x-8">
+                <a href="./index.html" class="text-black-200 hover:text-gray-600 transition-colors">Home</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+            </div>
+
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+            </div>
+
+            <!-- Botón hamburguesa (visible solo en móvil) -->
+            <button id="menu-toggle" class="md:hidden text-black-200 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú móvil (oculto por defecto) -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute left-0 w-full bg-white bg-opacity-90 backdrop-blur-md px-8 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">Home</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <div class="fade-in mt-20 flex flex-col md:flex-row gap-6 p-6 md:p-12">
+        <!-- Texto izquierda -->
+        <div class="w-full md:w-1/2 flex items-stretch">
+            <div class="bg-white rounded-lg  p-4 flex flex-col justify-center">
+                <div class="text-base md:text-lg leading-relaxed text-gray-800">
+                    <h2 class="text-center font-bold text-4xl">Susan R. Zandhuis</h2><br>
+                    <h2 class="text-center text-3xl ">DECOBAY Interiors LLC CEO | Principal Interior Designer</h2><br>
+                    <h3 class="text-center text-2xl ">
+                    With two decades of experience in the design industry, Susan is the Founder & Principal Designer who
+                    brings a refined balance of creativity, technical knowledge, and practical expertise to every
+                    project. Her passion for design is matched by her commitment to precision and functionality.
+                    Currently pursuing her second degree in Architecture at the Academy of Art University, Susan
+                    seamlessly blends interior design with architectural insight, offering her clients a comprehensive
+                    design experience. Susan’s career has spanned luxury residential properties, commercial spaces, and
+                    bespoke projects, always guided by her core belief: that thoughtful design transforms not only
+                    spaces but lives.
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Imagen derecha -->
+        <div class="w-full md:w-1/2 flex">
+            <div class="aspect-[4/5] w-full">
+                <img src="./public/about.png" alt="Susan R. Zandhuis"
+                    class="w-full h-full object-cover rounded-lg shadow-md" />
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="fade-in flex flex-col md:flex-row mt-8 gap-5 mx-16">
+        <!-- Left Image -->
+        <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+                alt="Design 1" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Right Text -->
+        <div class="w-full md:w-1/2 p-6 md:p-12 flex items-center">
+            <p class="text-lg">
+                DECOBAY Interiors LLC creates timeless interiors that blend modern aesthetics with classic
+                elegance. Our approach is deeply personal, tailoring each space to reflect our clients'
+                unique
+                stories.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="fade-in flex flex-col md:flex-row my-8 gap-5 mx-16 ">
+        <!-- Left Image -->
+        <div class="w-full md:w-1/2 p-6 md:p-12 flex items-center">
+            <p class="text-lg">
+                DECOBAY Interiors LLC creates timeless interiors that blend modern aesthetics with classic
+                elegance. Our approach is deeply personal, tailoring each space to reflect our clients'
+                unique
+                stories.
+            </p>
+        </div>
+
+        <!-- Right Text -->
+
+
+
+        <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+                alt="Design 1" class="w-full h-full object-cover">
+        </div>
+    </div>
+
+
+
+    <div class="fade-in flex flex-col md:flex-row mt-8 gap-5 mx-16">
+        <!-- Left Image -->
+        <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+                alt="Design 1" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Right Text -->
+        <div class="w-full md:w-1/2 p-6 md:p-12 flex items-center">
+            <p class="text-lg">
+                DECOBAY Interiors LLC creates timeless interiors that blend modern aesthetics with classic
+                elegance. Our approach is deeply personal, tailoring each space to reflect our clients'
+                unique
+                stories.
+            </p>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-[#D8C4A3] mt-20 text-white space-y-5">
+        <!-- Footer 1 -->
+        <div class=" flex flex-col md:flex-row p-12 border-b border-white/20 gap-5">
+            <!-- Left Section -->
+            <div class="md:w-1/3 mb-8 md:mb-0">
+                <div class="grid grid-cols-3 gap-5">
+                    <a href="#" class="hover:underline">Work</a>
+                    <a href="#" class="hover:underline">Carrers</a>
+                    <a href="#" class="hover:underline">Services</a>
+                    <a href="#" class="hover:underline">Press</a>
+                    <a href="./index.html" class="hover:underline">Home</a>
+                    <a href="#" class="hover:underline">Contact</a>
+                </div>
+            </div>
+
+            <!-- Center Section -->
+            <div class="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
+                <div class="text-2xl font-serif mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">DECOBAY Interiors LLC
+                </div>
+                <p class="text-center max-w-md">
+                    DECOBAY Interiors LLC is a boutique luxury interior design firm nestled in the heart of San
+                    Francisco,
+                    California.
+                </p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="md:w-1/3 flex justify-center md:justify-end">
+                <div class="text-2xl font-serif">DB</div>
+            </div>
+        </div>
+
+        <!-- Footer 2 -->
+        <div class=" fade-in flex flex-col md:flex-row justify-between p-12 border-b border-white/20 gap-5">
+            <!-- Left Section -->
+            <div class="mb-8 md:mb-0">
+                <p>DECOBAY Interiors LLC | Copyright 2025</p>
+                <p>Site Credit</p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="text-center md:text-right">
+                <p>Susan@decobayinteriors.com</p>
+                <p>San Francisco, California</p>
+            </div>
+        </div>
+
+        <!-- Footer 3 -->
+        <div class=" fade-in p-12 border-b border-white/20">
+            <br class="border-t border-white my-4">
+            <h2 class="text-center tracking-hover text-xl">FOLLOW ALONG</h2>
+        </div>
+
+        <!-- Footer 4 -->
+        <div class=" fade-in p-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 1" class="w-full h-[150px] object-cover">
+                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 2" class="w-full h-[150px] object-cover">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 3" class="w-full h-[150px] object-cover">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 4" class="w-full h-[150px] object-cover">
+                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 5" class="w-full h-[150px] object-cover">
+                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                    alt="Gallery 6" class="w-full h-[150px] object-cover">
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+
+
+        const fadeInElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Opcional: dejar de observar después de que se haya mostrado
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Opcional: quitar la clase visible si quieres que se vuelva a animar al volver a aparecer
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1, // Se dispara cuando el 10% del elemento es visible
+            rootMargin: '0px 0px -50px 0px' // Ajusta cuándo se considera "visible"
+        });
+
+        // Observar todos los elementos con clase fade-in
+        fadeInElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+
+            // Cambiar el icono de hamburguesa a X cuando está abierto
+            const svg = this.querySelector('svg');
+            if (menu.classList.contains('hidden')) {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            } else {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
