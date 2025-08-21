@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>DECOBAY Interiors LLC</title>
+</head>
+<style>
+    .slide-carousel {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #111;
+    }
+
+    .slide-track {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+        width: 100%;
+    }
+
+    .slide-item {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .slide-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+     #pano2 {
+      position: relative;
+      height: 350px;
+      width: 80%;
+    
+    }
+
+    
+      
+</style>
+
+<body>
+
+    <header class="w-full  top-0 left-0 z-[500] py-6 px-8 backdrop-blur-md">
+        <div class="container-margins">
+            <div class="flex justify-between items-center">
+                <!-- Menú desktop (visible en md y arriba) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+                </div>
+
+                <!-- Botón hamburguesa (visible solo en móvil) -->
+                <button id="menu-toggle" class="md:hidden text-black-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil (oculto por defecto) -->
+        <div id="mobile-menu"
+            class="hidden md:hidden  left-0 w-full bg-white bg-opacity-90 backdrop-blur-md px-8 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="slide-carousel">
+        <div class="slide-track" id="carouselTrack">
+            <div class="slide-item"><img src="https://i.postimg.cc/h4ZDWFRv/1sdsfs.jpg" alt="Slide 1"></div>
+            <div class="slide-item"><img src="https://i.postimg.cc/Yq4ptXt3/3tyrty.jpg" alt="Slide 2"></div>
+            <div class="slide-item"><img src="https://i.postimg.cc/7L4DMw0s/4ghh.jpg" alt="Slide 3"></div>
+        </div>
+    </div>
+
+
+    <div class="title">
+
+  <h2> Scroll inside the img for a 360°  view</h2>
+ </div>
+  <section class="body2">
+  
+  <div id="pano"></div>
+
+</section>
+
+  <!-- Incluye Marzipano desde CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marzipano@0.10.1/dist/marzipano.js"></script>
+
+  <script>
+    var viewer = new Marzipano.Viewer(document.getElementById("pano"));
+
+    var source = Marzipano.ImageUrlSource.fromString(
+      "https://i.postimg.cc/PqMHS9Mt/33erwe3.jpg"
+    );
+
+    var geometry = new Marzipano.EquirectGeometry([{ width: 4000 }]);
+
+    var view = new Marzipano.RectilinearView(
+      null,
+      Marzipano.RectilinearView.limit.traditional(1024, 120 * Math.PI / 180)
+    );
+
+    var scene = viewer.createScene({
+      source: source,
+      geometry: geometry,
+      view: view,
+      pinFirstLevel: true
+    });
+
+    scene.switchTo();
+  </script>
+
+    <script>
+        const track = document.getElementById('carouselTrack');
+        const totalSlides = track.children.length;
+        let index = 0;
+
+        setInterval(() => {
+            index = (index + 1) % totalSlides;
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }, 3000);
+    </script>
+
+</body>
+
+</html>

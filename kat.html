@@ -1,124 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
-
     <title>DECOBAY Interiors LLC</title>
-</head>
-<body>
-
-   <style >
-
-        body{
-            overflow-x:hidden;
+    <style>
+        body {
+            overflow-x: hidden;
         }
+
         @layer utilities {
             .tracking-hover {
                 letter-spacing: normal;
                 transition: letter-spacing 0.5s ease;
             }
+
             .tracking-hover:hover {
                 letter-spacing: 2px;
             }
+
             .logo-transition {
                 opacity: 1;
                 transition: opacity 0.5s ease;
             }
+
             .logo-hidden {
                 opacity: 0;
             }
+
             .sticky-logo-initial {
                 position: sticky;
                 top: 50%;
                 transform: translateY(-50%);
             }
+
             .sticky-logo-main {
                 position: sticky;
                 top: 50%;
                 transform: translateY(-50%);
             }
 
-             .fade-in {
-            opacity: 0;
-            transition: opacity 2s ease;
+            .fade-in {
+                opacity: 0;
+                transition: opacity 2s ease;
+            }
+
+            .fade-in.visible {
+                opacity: 1;
+            }
+
+            .responsive-image-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%;
+                /* Proporción 16:9 por defecto */
+            }
+
+            .responsive-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* Ajustes específicos para secciones */
+            @media (max-width: 768px) {
+                .flex-col-on-mobile {
+                    flex-direction: column;
+                }
+
+                .full-width-on-mobile {
+                    width: 100% !important;
+                }
+
+                .h-auto-on-mobile {
+                    height: auto !important;
+                }
+            }
         }
-        .fade-in.visible {
-            opacity: 1;
+
+        .title {
+            text-align: center;
         }
-        .responsive-image-container {
+
+        #pano {
             position: relative;
+            height: 350px;
             width: 100%;
-            padding-bottom: 56.25%; /* Proporción 16:9 por defecto */
         }
-        
-        .responsive-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Ajustes específicos para secciones */
-        @media (max-width: 768px) {
-            .flex-col-on-mobile {
-                flex-direction: column;
-            }
-            .full-width-on-mobile {
-                width: 100% !important;
-            }
-            .h-auto-on-mobile {
-                height: auto !important;
-            }
-        }
-    }
 
-    .part1{
-        margin-bottom: 50px;
-    }
+        .part1 {
+            margin-bottom: 50px;
+        }
 
-    .part2{
-        margin-top: 50px;
-    }
+        .part2 {
+            margin-top: 50px;
+        }
 
         .text-outline {
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6); /* Borde oscuro */
-  }
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+            /* Borde oscuro */
+        }
 
-    #mobile-menu {
-        transition: all 0.3s ease;
-    }
-  
+        #mobile-menu {
+            transition: all 0.3s ease;
+        }
+
+        /* Nuevos estilos agregados */
+        .container-margins {
+            width: 100%;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .section-padding {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container-margins {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+
+            .section-padding {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container-margins {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+
+            .section-padding {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+
+        .image-container {
+            /* border-radius: 0.5rem; */
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body class="font-sans max-w-full overflow-x-hidden">
     <!-- Header -->
     <header class="w-full absolute top-0 left-0 z-[500] py-6 px-8 backdrop-blur-md">
-        <div class="flex justify-between items-center">
-            <!-- Menú desktop (visible en md y arriba) -->
-            <div class="hidden md:flex space-x-8">
-                <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
-                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
-                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
-            </div>
+        <div class="container-margins">
+            <div class="flex justify-between items-center">
+                <!-- Menú desktop (visible en md y arriba) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                </div>
 
-            <div class="hidden md:flex space-x-8">
-                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
-                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
-                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
-            </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+                </div>
 
-            <!-- Botón hamburguesa (visible solo en móvil) -->
-            <button id="menu-toggle" class="md:hidden text-black-200 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
+                <!-- Botón hamburguesa (visible solo en móvil) -->
+                <button id="menu-toggle" class="md:hidden text-black-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <!-- Menú móvil (oculto por defecto) -->
@@ -136,7 +200,7 @@
     </header>
 
     <!-- Main Section -->
-    <main class="fade-in space-y-5 relative">
+    <main class="fade-in ">
         <section class="sections"> <!-- First Logo (sticky for first 80vh) -->
             <div id="main-logo" class="logo-transition text-center sticky-logo-initial z-[101] h-0 flex justify-center">
                 <div class="text-white text-6xl font-serif drop-shadow-lg text-outline ">KAT & ADAM </div>
@@ -145,16 +209,15 @@
                 class="sticky top-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none h-0 flex justify-center">
                 <div class="text-white text-6xl font-serif text-center  text-outline"></div>
             </div> <!-- Hero Section with Logo --> <!-- Background Image -->
-            <div class="image-top relative h-[120vh] inset-0 z-50"> <img
-                    src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Interior Design" class="w-full h-full object-cover"> </div>
+            <div class="image-top relative h-[120vh] inset-0 z-50">
+                <img src="./public/Kat/k.jpg" alt="Interior Design" class="w-full h-full object-cover">
+            </div>
 
             <!-- Section 1 - Modificada -->
-            <div class="fade-in flex flex-col md:flex-row mt-8 gap-5">
+            <div class="container-margins fade-in flex flex-col md:flex-row mt-8 gap-5">
                 <!-- Left Image -->
-                <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-                        alt="Design 1" class="w-full h-full object-cover">
+                <div class="md:w-1/2 aspect-[4/3] md:aspect-auto image-container">
+                    <img src="./public/Kat/k_01.jpg" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Right Text -->
@@ -168,75 +231,53 @@
                 </div>
             </div>
 
-            <!-- Section 2 - Modificada -->
-            <div class="fade-in w-full aspect-[16/9] md:aspect-[3/2] mt-10 mb-10">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-                    alt="Design 2" class="w-full h-full object-cover">
+            <div class=" mt-10 mb-8 title ">
+                <h2 class="text-3xl font-bold"> Scroll inside the image to see in 360° view </h2>
             </div>
+            <div class="" id="pano"></div>
+
+            <!-- Section 2 - Modificada -->
+            <!-- <div class="container-margins fade-in w-full aspect-[16/9] md:aspect-[3/2] mt-10 mb-10 image-container">
+                <img src="./public/Kat/k_02.jpg" alt="Interior design" class="w-full h-full object-cover">
+            </div> -->
 
             <!-- Section 3 - Modificada -->
-            <div class="fade-in flex flex-col md:flex-row w-full gap-5">
+            <div class="container-margins mt-10 fade-in flex flex-col md:flex-row w-full gap-5">
                 <!-- Left Image -->
-                <div class="w-full md:w-1/2 aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-                        alt="Design 3" class="w-full h-full object-cover">
+                <div class="w-full md:w-1/2 aspect-[4/3] image-container">
+                    <img src="./public/Kat/MB1_068v3.jpg" class="w-full h-full object-cover" alt="Interior design">
                 </div>
 
                 <!-- Right Image -->
-                <div class="w-full md:w-1/2 aspect-[4/3] flex items-center justify-center">
-                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=653&q=80"
-                        alt="Design 4" class="w-full h-full md:h-[50vh] object-cover">
+                <div class="w-full  aspect-[4/3] flex items-center justify-center object-cover image-container">
+                    <img src="./public/Kat/foot.png" alt="Design 4" class="w-full h-full md:h-[50vh] object-cover">
+                    <!-- <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=653&q=80"
+                        alt="Design 4" class="w-full h-full md:h-[50vh] object-cover"> -->
                 </div>
             </div>
         </section>
 
-        <!-- Description Section - Modificada -->
-        <div class="fade-in flex flex-col md:flex-row w-full gap-5 mb-20">
-            <!-- Part 1 -->
-            <div class="w-full md:w-1/2 flex flex-col gap-5">
-                <div class="aspect-[16/9]">
-                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Description 1" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6 md:p-8">
-                    <p>Each project begins with a comprehensive consultation to understand your vision</p>
-                </div>
-            </div>
-
-            <!-- Part 2 -->
-            <div class="w-full md:w-1/2 aspect-[16/9] md:aspect-[3/2]">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Description 2" class="w-full h-full object-cover">
-            </div>
-        </div>
-
-        <!-- Description 2 Section - Modificada -->
-        <div class="fade-in w-full aspect-[16/9] md:aspect-[21/9]">
-            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Description Full" class="w-full h-full object-cover">
-        </div>
 
 
-       
+
 
         <!-- Pre Footer -->
-        <div class=" bg-[#D8C4A3] h-[40vh] flex flex-col items-center justify-center p-8">
+        <div
+            class=" bg-[#D8C4A3] h-[40vh] flex flex-col items-center justify-center p-8 rounded-lg mt-10">
             <h2 class="text-4xl font-serif mb-4 text-center text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                 Let's transform your space.
             </h2>
             <h3 class="text-xl mb-8 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
                 Inquire about your project
             </h3>
-            <hr class="border-t border-white my-4 w-1/4">
+            <hr class="border-t border-white w-1/4">
         </div>
-
-
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#D8C4A3] text-white space-y-5">
+    <footer class="bg-[#D8C4A3] text-white ">
         <!-- Footer 1 -->
-        <div class=" flex flex-col md:flex-row p-12 border-b border-white/20 gap-5">
+        <div class="container-margins flex flex-col md:flex-row p-12 border-b border-white/20 gap-5">
             <!-- Left Section -->
             <div class="md:w-1/3 mb-8 md:mb-0">
                 <div class="grid grid-cols-3 gap-5">
@@ -267,7 +308,8 @@
         </div>
 
         <!-- Footer 2 -->
-        <div class=" fade-in flex flex-col md:flex-row justify-between p-12 border-b border-white/20 gap-5">
+        <div
+            class="container-margins fade-in flex flex-col md:flex-row justify-between p-12 border-b border-white/20 gap-5">
             <!-- Left Section -->
             <div class="mb-8 md:mb-0">
                 <p>DECOBAY Interiors LLC | Copyright 2025</p>
@@ -282,29 +324,43 @@
         </div>
 
         <!-- Footer 3 -->
-        <div class=" fade-in p-12 border-b border-white/20">
+        <div class="container-margins fade-in p-12 border-b border-white/20">
             <br class="border-t border-white my-4">
             <h2 class="text-center tracking-hover text-2xl">FOLLOW ALONG</h2>
         </div>
 
         <!-- Footer 4 -->
-        <div class=" fade-in p-8">
+        <div class="container-margins fade-in p-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 1" class="w-full h-[150px] object-cover">
-                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 2" class="w-full h-[150px] object-cover">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 3" class="w-full h-[150px] object-cover">
-                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 4" class="w-full h-[150px] object-cover">
-                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 5" class="w-full h-[150px] object-cover">
-                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
-                    alt="Gallery 6" class="w-full h-[150px] object-cover">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 1" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 2" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 3" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 4" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 5" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 6" class="w-full h-[150px] object-cover">
+                </div>
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marzipano@0.10.1/dist/marzipano.js"></script>
 
     <script>
         // Handle logo transition on scroll
@@ -359,6 +415,28 @@
             }
         });
 
+        // Panorama viewer
+        var viewer = new Marzipano.Viewer(document.getElementById("pano"));
+
+        var source = Marzipano.ImageUrlSource.fromString(
+            "https://live.staticflickr.com/65535/54644989745_49f367c7e4_b.jpg"
+        );
+
+        var geometry = new Marzipano.EquirectGeometry([{ width: 4000 }]);
+
+        var view = new Marzipano.RectilinearView(
+            null,
+            Marzipano.RectilinearView.limit.traditional(1024, 120 * Math.PI / 180)
+        );
+
+        var scene = viewer.createScene({
+            source: source,
+            geometry: geometry,
+            view: view,
+            pinFirstLevel: true
+        });
+
+        scene.switchTo();
     </script>
 </body>
 
