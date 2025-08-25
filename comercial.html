@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>DECOBAY Interiors LLC</title>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        @layer utilities {
+            .tracking-hover {
+                letter-spacing: normal;
+                transition: letter-spacing 0.5s ease;
+            }
+
+            .tracking-hover:hover {
+                letter-spacing: 2px;
+            }
+
+            .logo-transition {
+                opacity: 1;
+                transition: opacity 0.5s ease;
+            }
+
+            .logo-hidden {
+                opacity: 0;
+            }
+
+            .sticky-logo-initial {
+                position: sticky;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .sticky-logo-main {
+                position: sticky;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .fade-in {
+                opacity: 0;
+                transition: opacity 2s ease;
+            }
+
+            .fade-in.visible {
+                opacity: 1;
+            }
+
+            .responsive-image-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%;
+                /* Proporción 16:9 por defecto */
+            }
+
+            .responsive-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            /* Ajustes específicos para secciones */
+            @media (max-width: 768px) {
+                .flex-col-on-mobile {
+                    flex-direction: column;
+                }
+
+                .full-width-on-mobile {
+                    width: 100% !important;
+                }
+
+                .h-auto-on-mobile {
+                    height: auto !important;
+                }
+            }
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        #pano {
+            position: relative;
+            height: 350px;
+            width: 100%;
+        }
+
+        .part1 {
+            margin-bottom: 50px;
+        }
+
+        .part2 {
+            margin-top: 50px;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+            /* Borde oscuro */
+        }
+
+        #mobile-menu {
+            transition: all 0.3s ease;
+        }
+
+        /* Nuevos estilos agregados */
+        .container-margins {
+            width: 100%;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .section-padding {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container-margins {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+
+            .section-padding {
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container-margins {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+
+            .section-padding {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+
+        .image-container {
+            /* border-radius: 0.5rem; */
+            overflow: hidden;
+        }
+
+
+        .container2 {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            color: #34495e;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .carousel-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.7s ease-in-out;
+            height: 500px;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .carousel-btn.next {
+            right: 15px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .instructions {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .instructions h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .instructions p {
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                max-width: 100%;
+            }
+
+            .carousel {
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel {
+                height: 250px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans max-w-full overflow-x-hidden">
+    <!-- Header -->
+    <header class="w-full absolute top-0 left-0 z-[500] py-6 px-8 backdrop-blur-md">
+        <div class="container-margins">
+            <div class="flex justify-between items-center">
+                <!-- Menú desktop (visible en md y arriba) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                    <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+                </div>
+
+                <!-- Botón hamburguesa (visible solo en móvil) -->
+                <button id="menu-toggle" class="md:hidden text-black-200 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil (oculto por defecto) -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute left-0 w-full bg-white bg-opacity-90 backdrop-blur-md px-8 py-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="./about.html" class="text-black-200 hover:text-gray-600 transition-colors">About</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Services</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Work</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Press</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Carrers</a>
+                <a href="#" class="text-black-200 hover:text-gray-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="fade-in ">
+        <section class="sections"> <!-- First Logo (sticky for first 80vh) -->
+            <div id="main-logo" class="logo-transition text-center sticky-logo-initial z-[101] h-0 flex justify-center">
+                <div class="text-white text-6xl font-serif drop-shadow-lg text-outline ">Comercial Projects</div>
+            </div> <!-- Sticky Logo (only within main section) -->
+            <div id="sticky-logo"
+                class="sticky top-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none h-0 flex justify-center">
+                <div class="text-white text-6xl font-serif text-center  text-outline"></div>
+            </div> <!-- Hero Section with Logo --> <!-- Background Image -->
+            <div class="image-top relative h-[120vh] inset-0 z-50">
+                <img src="./public/Palmetto Fremont/Photo Mar 25 2025, 10 14 07 AM (2).jpg" alt="Interior Design"
+                    class="w-full h-full object-cover">
+            </div>
+
+            <!-- Section 1 - Modificada -->
+            <div class="container-margins fade-in flex flex-col md:flex-row mt-8 gap-5">
+                <!-- Left Image -->
+                <div class="md:w-1/2 aspect-[4/3] md:aspect-auto image-container">
+                    <img src="./public/Palmetto Livermore/JB 2_02final.jpg" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Right Text -->
+                <div class="w-full md:w-1/2 p-6 md:p-12 flex items-center">
+                    <p class="text-lg">
+                        Together we create timeless interiors that blend modern aesthetics with classic
+                        elegance. Our approach is deeply personal, tailoring each space to reflect your business's
+                        unique
+                        stories.
+                    </p>
+                </div>
+            </div>
+
+            <!-- <div class=" mt-10 mb-8 title ">
+                <h2 class="text-3xl font-bold"> Scroll inside the image to see in 360° view </h2>
+            </div>
+            <div class="" id="pano"></div>  -->
+
+            <!-- Section 2 - Modificada -->
+            <!-- <div class="container-margins fade-in w-full aspect-[16/9] md:aspect-[3/2] mt-10 mb-10 image-container">
+                <img src="./public/Kat/k_02.jpg" alt="Interior design" class="w-full h-full object-cover">
+            </div> -->
+
+            <!-- Section 3 - Modificada -->
+            <div class="container-margins mt-10 fade-in flex flex-col md:flex-row w-full gap-5">
+                <!-- Left Image -->
+                <div class="w-full md:w-1/2 aspect-[4/3] image-container">
+                    <img src="./public/Palmetto Livermore/JBkfinal1.jpg" class="w-full h-full object-cover"
+                        alt="Interior design">
+                </div>
+
+                <!-- Right Image -->
+                <div class="w-full  aspect-[4/3] flex items-center justify-center object-cover image-container">
+                    <img src="./public/Palmetto Stonetown/JB_16.jpg" alt="Design 4"
+                        class="w-full h-full md:h-[50vh] object-contain">
+                    <!-- <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=653&q=80"
+                        alt="Design 4" class="w-full h-full md:h-[50vh] object-cover"> -->
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+        <div class="container2">
+
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-slide">
+                        <img src="./public/IMG_5345.JPG" alt="Imagen 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="./public/IMG_5283.JPG" alt="Imagen 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="./public/IMG_5120.JPG" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="./public/IMG_4860.JPG" alt="Imagen 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="./public/IMG_4856.JPG" alt="Imagen 5">
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev">&lt;</button>
+                <button class="carousel-btn next">&gt;</button>
+
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                    <div class="indicator" data-index="3"></div>
+                    <div class="indicator" data-index="4"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const carousel = document.querySelector('.carousel');
+                const slides = document.querySelectorAll('.carousel-slide');
+                const prevBtn = document.querySelector('.carousel-btn.prev');
+                const nextBtn = document.querySelector('.carousel-btn.next');
+                const indicators = document.querySelectorAll('.indicator');
+
+                let currentIndex = 0;
+                let intervalId;
+                const slideInterval = 5000; // 5 segundos
+
+                // Función para actualizar el carrusel
+                function updateCarousel() {
+                    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                    // Actualizar indicadores
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Función para avanzar al siguiente slide
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
+
+                // Función para retroceder al slide anterior
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                }
+
+                // Iniciar el desplazamiento automático
+                function startAutoSlide() {
+                    intervalId = setInterval(nextSlide, slideInterval);
+                }
+
+                // Detener el desplazamiento automático
+                function stopAutoSlide() {
+                    clearInterval(intervalId);
+                }
+
+                // Event listeners para los botones
+                nextBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                });
+
+                // Event listeners para los indicadores
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', () => {
+                        stopAutoSlide();
+                        currentIndex = parseInt(indicator.getAttribute('data-index'));
+                        updateCarousel();
+                        startAutoSlide();
+                    });
+                });
+
+                // Pausar el desplazamiento automático al pasar el mouse sobre el carrusel
+                const carouselContainer = document.querySelector('.carousel-container');
+                carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+                carouselContainer.addEventListener('mouseleave', startAutoSlide);
+
+                // Iniciar el carrusel
+                startAutoSlide();
+            });
+        </script>
+
+
+
+
+
+
+
+
+        <!-- Pre Footer -->
+        <div class=" bg-[#D8C4A3] h-[40vh] flex flex-col items-center justify-center p-8 rounded-lg mt-10">
+            <h2 class="text-4xl font-serif mb-4 text-center text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                Let's transform your space.
+            </h2>
+            <h3 class="text-xl mb-8 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)]">
+                Inquire about your project
+            </h3>
+            <hr class="border-t border-white w-1/4">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#D8C4A3] text-white ">
+        <!-- Footer 1 -->
+        <div class="container-margins flex flex-col md:flex-row p-12 border-b border-white/20 gap-5">
+            <!-- Left Section -->
+            <div class="md:w-1/3 mb-8 md:mb-0">
+                <div class="grid grid-cols-3 gap-5">
+                    <a href="#" class="hover:underline">Work</a>
+                    <a href="#" class="hover:underline">Carrers</a>
+                    <a href="#" class="hover:underline">Services</a>
+                    <a href="#" class="hover:underline">Press</a>
+                    <a href="./about.html" class="hover:underline">About</a>
+                    <a href="#" class="hover:underline">Contact</a>
+                </div>
+            </div>
+
+            <!-- Center Section -->
+            <div class="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
+                <div class="text-4xl font-serif mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">DECOBAY Interiors LLC
+                </div>
+                <p class="text-center max-w-md">
+                    Is a boutique luxury Interior Design firm nestled in the heart of San
+                    Francisco,
+                    California.
+                </p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="md:w-1/3 flex justify-center md:justify-end">
+                <div class="text-2xl font-serif">DB</div>
+            </div>
+        </div>
+
+        <!-- Footer 2 -->
+        <div
+            class="container-margins fade-in flex flex-col md:flex-row justify-between p-12 border-b border-white/20 gap-5">
+            <!-- Left Section -->
+            <div class="mb-8 md:mb-0">
+                <p>DECOBAY Interiors LLC | Copyright 2025</p>
+                <p>Site Credit</p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="text-center md:text-right">
+                <p>Susan@decobayinteriors.com</p>
+                <p>San Francisco, California</p>
+            </div>
+        </div>
+
+        <!-- Footer 3 -->
+        <div class="container-margins fade-in p-12 border-b border-white/20">
+            <br class="border-t border-white my-4">
+            <h2 class="text-center tracking-hover text-2xl">FOLLOW ALONG</h2>
+        </div>
+
+        <!-- Footer 4 -->
+        <div class="container-margins fade-in p-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 1" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 2" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 3" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 4" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 5" class="w-full h-[150px] object-cover">
+                </div>
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80"
+                        alt="Gallery 6" class="w-full h-[150px] object-cover">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marzipano@0.10.1/dist/marzipano.js"></script>
+
+    <script>
+        // Handle logo transition on scroll
+        window.addEventListener('scroll', function () {
+            const mainLogo = document.getElementById('main-logo');
+            const stickyLogo = document.getElementById('sticky-logo');
+            const scrollPosition = window.scrollY;
+
+            // Start fading the first logo earlier (at 50vh instead of 80vh)
+            if (scrollPosition > window.innerHeight * 0.3) {
+                mainLogo.classList.add('logo-hidden');
+                stickyLogo.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                mainLogo.classList.remove('logo-hidden');
+                stickyLogo.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        const fadeInElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Opcional: dejar de observar después de que se haya mostrado
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Opcional: quitar la clase visible si quieres que se vuelva a animar al volver a aparecer
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1, // Se dispara cuando el 10% del elemento es visible
+            rootMargin: '0px 0px -50px 0px' // Ajusta cuándo se considera "visible"
+        });
+
+        // Observar todos los elementos con clase fade-in
+        fadeInElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+
+            // Cambiar el icono de hamburguesa a X cuando está abierto
+            const svg = this.querySelector('svg');
+            if (menu.classList.contains('hidden')) {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            } else {
+                svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        });
+
+        // Panorama viewer
+        var viewer = new Marzipano.Viewer(document.getElementById("pano"));
+
+        var source = Marzipano.ImageUrlSource.fromString(
+            "https://live.staticflickr.com/65535/54644989745_49f367c7e4_b.jpg"
+        );
+
+        var geometry = new Marzipano.EquirectGeometry([{ width: 4000 }]);
+
+        var view = new Marzipano.RectilinearView(
+            null,
+            Marzipano.RectilinearView.limit.traditional(1024, 120 * Math.PI / 180)
+        );
+
+        var scene = viewer.createScene({
+            source: source,
+            geometry: geometry,
+            view: view,
+            pinFirstLevel: true
+        });
+
+        scene.switchTo();
+    </script>
+</body>
+
+</html>
